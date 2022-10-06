@@ -1,1 +1,12 @@
-
+numpy
+scipy
+scikit-learn
+matplotlib
+pandas
+fastapi
+uvicorn
+uvloop
+httptools
+pickle
+pydantic
+typing
