@@ -86,24 +86,25 @@ def make_mat(df,x):
                 ll+=1
             k+=1
     top_rec=[]   
-     
-    # for i in l_rec:
-    #     dict={}
-    #     ktop=df2.loc[df2['name']==i]
-    #     dict[i]=ktop['image_url']
-    #     top_rec.append(dict)
+    alt_rec=[]
+    for i in l_rec:
+        dict={}
+        ktop=df2.loc[df2['name']==i]
+        y1=list((ktop['image_url'].values))
+        dict[i]=y1[0]
+        top_rec.append(dict)
     for i in l_top:
         dict={}
         ktop=df2.loc[df2['name']==i]
         
         y=list((ktop['image_url'].values))
         dict[i]=y[0]
-        top_rec.append(dict)    
+        alt_rec.append(dict)    
     print(l_rec)
 
 
                 
-    return [ l_rec,top_rec]   
+   return [ top_rec,alt_rec]  
             
            
     
