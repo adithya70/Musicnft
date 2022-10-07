@@ -20,11 +20,10 @@ cluster_map['cluster'] = model.labels_
 
 
 def query(l):
-    
 
-    
     k=make_mat(df,[l])
     return k
+
 
 def get_points(p):
     k=cluster_map.loc[cluster_map['cluster']==p]
@@ -90,19 +89,33 @@ def make_mat(df,x):
     for i in l_rec:
         dict={}
         ktop=df2.loc[df2['name']==i]
+        k2=list((ktop['contract_address'].values))
+        base_url="https://magiceden.io/item-details/"+k2[0]+"?name="
+        a,b = i.split('#', 1)
+        name=a.replace(" ","-")
+        b='%23'+b
+        name=name[:len(name)-1]
+        name=name+b     
+        
+
         y1=list((ktop['image_url'].values))
-        dict[i]=y1[0]
+        dict[i]=[y1[0],base_url+name]
         top_rec.append(dict)
     for i in l_top:
         dict={}
         ktop=df2.loc[df2['name']==i]
-        
+        k3=list((ktop['contract_address'].values))
+        base_url="https://magiceden.io/item-details/"+k3[0]+"?name=" 
+        a,b = i.split('#', 1)
+        name=a.replace(" ","-")
+        b='%23'+b
+        name=name[:len(name)-1]
+        name=name+b     
+         
         y=list((ktop['image_url'].values))
-        dict[i]=y[0]
+        dict[i]=[y[0],base_url+name]
         alt_rec.append(dict)    
     print(l_rec)
-
-
                 
     return [ top_rec,alt_rec]  
             
